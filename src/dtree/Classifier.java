@@ -1,7 +1,5 @@
 package dtree;
 
-import java.util.ArrayList;
-
 import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
@@ -35,12 +33,12 @@ public class Classifier {
 			// store current attribute
 			tree.attributeIndex = attributeIndexWithHighestGain;
 			// create children array
-			tree.children = new ArrayList<Tree>(instances.attribute(attributeIndexWithHighestGain).numValues());
+			tree.children = new Tree[instances.attribute(attributeIndexWithHighestGain).numValues()];
 			// split the data set into subsets
 			Instances[] subsets = subsets(instances, attributeIndexWithHighestGain);
 			// generate a tree for each subset
-			for (int child = 0; child < tree.children.size(); child++) {
-				tree.children.set(child, train(subsets[child]));
+			for (int child = 0; child < tree.children.length; child++) {
+				tree.children[child] = train(subsets[child]);
 			}
 			return tree;
 		}

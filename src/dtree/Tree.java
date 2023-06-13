@@ -1,11 +1,10 @@
 package dtree;
 
-import java.util.List;
 
 import weka.core.Instance;
 
 public class Tree {
-	List<Tree> children = null;
+	Tree[] children = null;
 	int attributeIndex = -1;
 	double prediction = Double.NaN;
 
@@ -14,12 +13,12 @@ public class Tree {
 			return prediction;
 		} else {
 			double attributeValue = instance.value(attributeIndex);
-			return this.children.get((int) attributeValue).predict(instance);
+			return this.children[(int) attributeValue].predict(instance);
 		}
 	}
 
 	public boolean isLeaf() {
-		return children == null || children.size() == 0;
+		return children == null || children.length == 0;
 	}
 	@Override
 	public String toString() {
@@ -32,9 +31,9 @@ public class Tree {
 			b.append("Attribute : ");
 			b.append(attributeIndex);
 			b.append(" ");
-			for (int child = 0; child < children.size(); child++) {
+			for (int child = 0; child < children.length; child++) {
 				b.append(" ");
-				b.append(children.get(child).toString());
+				b.append(children[child].toString());
 			}
 		}
 		b.append(")");

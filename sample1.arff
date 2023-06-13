@@ -1,0 +1,17 @@
+@relation sample1
+
+@attribute f1 {f1_a,f1_b,f1_c,f1_d}
+@attribute f2 {f2_a, f2_b, f2_c}
+@attribute f3 {f3_a, f3_b}
+@attribute class {true,false}
+
+@data
+
+f1_a,f2_a,f3_a,true
+f1_a,f2_b,f3_b,true
+f1_a,f2_c,f3_a,true 
+f1_a,f2_a,f3_b,true
+f1_b,f2_a,f3_a,false
+f1_b,f2_b,f3_b,false
+f1_c,f2_c,f3_a,false
+f1_d,f2_a,f3_b,false
